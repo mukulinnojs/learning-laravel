@@ -1,18 +1,38 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcomepage');
+
+
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
+
+Route::post('/loginauth', function (Request $request) {
+
+    $request->validate([
+        'email' => 'required|email',
+        'pass' => 'required|min:1|max:16',
+    ]);
+
+    $email = $request->input('email');
+    $pass = $request->input('pass');
+
+    return "Your Email: {$email}  Your Password:  {$pass}";
+
+})->name('loginauth');
 
 Route::get('/home', function () {
     return view('home');
-});
+})->name('homepage');
 
 Route::get('/portfolio', function () {
     return view('portfolio');
-});
+})->name('portfoliopage');
 
 
 //Passing Parameters using get routes

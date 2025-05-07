@@ -1,24 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.bsdefault')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    @vite('resources/css/app.css')
-</head>
+@section('pagetitle')
+    Homepage
+@endsection
+@section('home')
+    active
+@endsection
+@section('maincontent')
 
-<body>
     <h1>This is the homepage</h1>
-    <a href="{{ url('/') }}" class="text-blue-500 underline">Visit Welcome Page</a>
+    <a href="{{ url('/') }}" class="underline">Visit Welcome Page</a>
     <br>
-    <a href="{{ url('/portfolio/Mukul/Dogra') }}" class="text-red-500 underline">Mukul's Portfolio</a>
+    <a href="{{ url('/portfolio/Mukul/Dogra') }}" class="underline">Mukul's Portfolio</a>
     <br>
-    <a href="{{ url('/portfolio/Akash/Nath') }}" class="text-purple-500 underline">Akash's Portfolio</a>
+    <a href="{{ url('/portfolio/Akash/Nath') }}" class="underline">Akash's Portfolio</a>
     <br>
     <br>
     <br>
-    <a href="{{ route('testpage') }}" class="text-orange-500 underline">Named Routes Test</a>
-</body>
-
-</html>
+    <a href="{{ route('testpage') }}" class="underline">Named Routes Test</a>
+@endsection

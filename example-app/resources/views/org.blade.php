@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.bsdefault')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Organization</title>
-    @vite('resources/css/app.css')
-</head>
+@section('pagetitle')
+    Organisation
+@endsection
 
-<body>
-    <h1 class="text-purple-500 font-bold">This is the Organization Page</h1>
-</body>
-
-</html>
+@section('maincontent')
+    <h1 class="text-danger">This is the Organization Page</h1>
+@endsection
