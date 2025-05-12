@@ -8,13 +8,17 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link @yield('welcome')" aria-current="page" href="{{ route('welcomepage') }}">Welcome</a>
+                    <a class="nav-link @yield('welcome')" aria-current="page"
+                        href="{{ route('welcomepage') }}">Welcome</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link @yield('home')" aria-current="page" href="{{ route('homepage') }}">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link @yield('portfolio')" href="{{ route('portfoliopage') }}">Portfolio</a>
+                </li>
+                <li class="nav-item ms-auto">
+                    <a class="nav-link @yield('bladesyntax')" href="{{ route('bladesyntax') }}">Blade Syntax</a>
                 </li>
                 <li class="nav-item ms-auto">
                     <a class="nav-link @yield('login')" href="{{ route('login') }}">Login</a>

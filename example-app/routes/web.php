@@ -7,7 +7,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcomepage');
 
-
+Route::view('/blade', 'bladetemplate')->name('bladesyntax');
 Route::get('/login', function () {
     return view('login');
 })->name('login');
