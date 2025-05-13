@@ -11,3 +11,14 @@
         <li>{{$loop->iteration}}. {{$c}}</li>
     @endforeach
 </ul>
+
+{{-- Using a for else loop to check if the array is empty --}}
+
+<h4>List of sports:</h4>
+<ul>
+    @forelse ($sport as $key => $value)
+        <li>{{$key}} - {{$value}}</li>
+    @empty
+        <li>No Sports to display</li>
+    @endforelse
+</ul>
