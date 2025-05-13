@@ -9,11 +9,18 @@ Route::get('/', function () {
 
 Route::view('/layouts', 'layouts')->name('layoutspage');
 
+ROute::view("/stack", "stack")->name('stackpushpage');
+
 Route::view('/blade', 'bladetemplate')->name('bladesyntax');
+
+
 Route::get('/login', function () {
     return view('login');
 })->name('login');
 
+Route::get('/users', function () {
+    return view('user');
+})->name('userspage');
 
 Route::post('/loginauth', function (Request $request) {
 
@@ -25,7 +32,7 @@ Route::post('/loginauth', function (Request $request) {
     $email = $request->input('email');
     $pass = $request->input('pass');
 
-    return "Your Email: {$email}  Your Password:  {$pass}";
+    return view('user', ["email" => $email, "pass" => $pass]);
 
 })->name('loginauth');
 
