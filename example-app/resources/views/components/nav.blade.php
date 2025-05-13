@@ -21,6 +21,9 @@
                     <a class="nav-link @yield('bladesyntax')" href="{{ route('bladesyntax') }}">Blade Syntax</a>
                 </li>
                 <li class="nav-item ms-auto">
+                    <a class="nav-link @yield('layouts')" href="{{ route('layoutspage') }}">Layouts</a>
+                </li>
+                <li class="nav-item ms-auto">
                     <a class="nav-link @yield('login')" href="{{ route('login') }}">Login</a>
                 </li>
             </ul>

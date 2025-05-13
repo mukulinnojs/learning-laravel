@@ -7,10 +7,13 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcomepage');
 
+Route::view('/layouts', 'layouts')->name('layoutspage');
+
 Route::view('/blade', 'bladetemplate')->name('bladesyntax');
 Route::get('/login', function () {
     return view('login');
 })->name('login');
+
 
 Route::post('/loginauth', function (Request $request) {
 
