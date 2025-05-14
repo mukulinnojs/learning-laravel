@@ -2,6 +2,17 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
+use App\Http\Controllers\PageController;
+
+
+
+
+// Controller Route
+
+Route::get("/hello-world/{name}", [PageController::class, "helloworld"])->name('hellopage');
+
+
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -21,6 +32,7 @@ Route::get('/login', function () {
 Route::get('/users', function () {
     return view('user');
 })->name('userspage');
+
 
 Route::post('/loginauth', function (Request $request) {
 

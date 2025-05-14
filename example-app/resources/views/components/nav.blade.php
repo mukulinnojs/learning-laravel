@@ -12,7 +12,7 @@
                         href="{{ route('welcomepage') }}">Welcome</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @yield('home')" aria-current="page" href="{{ route('homepage') }}">Home</a>
+                    <a class="nav-link @yield('home')" aria-current="page" href="{{ route('hellopage') }}">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link @yield('portfolio')" href="{{ route('portfoliopage') }}">Portfolio</a>

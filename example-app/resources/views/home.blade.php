@@ -18,4 +18,7 @@
     <br>
     <br>
     <a href="{{ route('testpage') }}" class="underline">Named Routes Test</a>
+    <br>
+    <a href="{{ route('hellopage') }}" class="underline">Hello Page {{$name}}</a>
+
 @endsection
