@@ -15,8 +15,8 @@ Route::get("/hello-world/{name}", [PageController::class, "helloworld"])->name('
 
 
 Route::get('/', function () {
-    return view('welcome');
-})->name('welcomepage');
+    return view('app');
+})->name('apppage');
 
 Route::view('/layouts', 'layouts')->name('layoutspage');
 
