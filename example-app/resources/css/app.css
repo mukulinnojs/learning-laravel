@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
@@ -6,6 +6,45 @@
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif,
+        "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+        "Noto Color Emoji";
+}
+.nav-btns {
+    @apply flex items-center justify-between font-semibold gap-3 hover:text-purple-500 ease-in-out duration-75;
+}
+.compose-inputs {
+    @apply flex gap-5 items-center border-b-1 border-b-gray-200 p-2  w-full;
+}
+.compose-inputs input {
+    @apply px-3 py-1 outline-0 border-0;
+}
+#message {
+    @apply p-2 border-0 outline-0;
+}
+
+.js-compose-mail {
+    position: absolute;
+    opacity: 0%;
+    width: 100dvw;
+    height: 100dvh;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 2s ease-in-out 500ms;
+}
+.active {
+    display: flex !important;
+    opacity: 100%;
+    transition: opactiy 2s ease-in-out 1.5s;
+}
+#compose-modal {
+    opacity: 0;
+    transition: opactiy 2s ease-in-out 1.5s;
+}
+
+.js-compose-mail.active #compose-modal {
+    opacity: 100%;
+    transition: opactiy 2s ease-in-out 1.5s;
 }
