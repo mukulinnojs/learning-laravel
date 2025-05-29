@@ -1,0 +1,12 @@
+.product-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 25px;
+    background-color: #fafafa;
+    border: 2px solid gray !important;
+    border-radius: 15px;
+}
+.product-form div input {
+    width: 300px;
+}
