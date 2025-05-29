@@ -9,7 +9,9 @@ Route::post('/addproduct', [ProductController::class, "addProduct"])->name('addp
 
 Route::get('/fetchproducts', [ProductController::class, 'fetchProducts'])->name('fetchproducts');
 
-Route::get('/editproduct/{id}', [ProductController::class, 'fetchProducts'])->name('fetchproducts');
+Route::post('/editproduct', [ProductController::class, 'editProduct'])->name('editproduct');
+
+Route::get('/deleteproduct/{id}', [ProductController::class, 'deleteProduct'])->name('deleteproduct');
 
 
 Route::get('/insert', function () {
@@ -21,8 +23,9 @@ Route::get('/read', function () {
 })->name('readpage');
 
 
-Route::get('/update', function () {
-    return view('update');
+Route::get('/update/{id}', function ($id) {
+    
+    return view('update', ['id' => $id]);
 })->name('updatepage');
 
 Route::get('/delete', function () {
