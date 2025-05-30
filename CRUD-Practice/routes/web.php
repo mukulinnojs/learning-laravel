@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\ProductController;
 
 // Controller Routes
@@ -24,8 +25,8 @@ Route::get('/read', function () {
 
 
 Route::get('/update/{id}', function ($id) {
-    
-    return view('update', ['id' => $id]);
+    $res = DB::table('products')->where('id', $id)->first();
+    return view('update', ['data' => $res]);
 })->name('updatepage');
 
 Route::get('/delete', function () {

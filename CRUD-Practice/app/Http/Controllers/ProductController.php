@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use DB;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -27,10 +27,10 @@ class ProductController extends Controller
         );
 
         if ($res) {
-            echo "Product Inserted Sucessfully";
+            $res = DB::table('products')->get();
+            return view('read', ['data' => $res]);
         } else {
             echo "Failed";
-
         }
     }
     public function fetchProducts()
@@ -45,31 +45,33 @@ class ProductController extends Controller
 
     public function editProduct(Request $req)
     {
+        $validated = $req->validate([
+            'title' => 'required|string|max:255',
+            'price' => 'required|numeric',
+            'imgurl' => 'nullable|url',
+        ]);
+
         $title = $req->title;
         $price = $req->price;
         $img = $req->image;
         $id = $req->id;
 
-        $res = $this->fetchsingleproduct($id);
+        $res = DB::table('products')->where(
+            'id',
+            $id
+        )->update([
+                    'title' => $title,
+                    'price' => $price,
+                    'imgurl' => $img
+                ]);
 
-        echo $res;
-        echo "<br>";
-        echo $title;
-        echo "<br>";
-        echo $price;
-        echo "<br>";
-        echo $img;
-        echo "<br>";
-        echo $id;
+        if ($res) {
+            $dt = DB::table('products')->get();
+            return view('read', ['data' => $dt]);
 
-        // $res = DB::table('products')->where(
-        //     'id',
-        //     $id
-        // )->update([
-        //             'title' => $title,
-        //             'price' => $price,
-        //             'imgurl' => $img
-        //         ]);
+        } else {
+            echo "Failed";
+        }
     }
 
 
@@ -78,7 +80,8 @@ class ProductController extends Controller
     {
         $res = DB::table('products')->where('id', $id)->delete();
         if ($res) {
-            echo "Product Deleted Successfully";
+            $dt = DB::table('products')->get();
+            return view('read', ['data' => $dt]);
         } else {
             echo "Failed";
         }

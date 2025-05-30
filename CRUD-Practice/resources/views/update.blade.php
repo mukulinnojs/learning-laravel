@@ -15,11 +15,11 @@
         <form action="{{route('editproduct')}}" method="post" class="product-form ms-auto me-auto">
             {{-- Product Title --}}
             @csrf
-            <input type="hidden" value="{{$id}}" name="id">
+            <input type="hidden" value="{{$data->id}}" name="id">
             <div class="mb-2">
                 <label for="title" class="form-label">Product Title</label>
                 <input type="text" class="form-control" id="title" name="title" aria-describedby="emailHelp"
-                    placeholder="Enter the title of your product" value="">
+                    placeholder="Enter the title of your product" value="{{$data->title}}">
             </div>
 
 
@@ -27,16 +27,16 @@
             <div class="mb-2">
                 <label for="price" class="form-label">Product Price</label>
                 <input type="number" class="form-control" id="price" name="price" aria-describedby="emailHelp"
-                    placeholder="Enter the price for your product">
+                    placeholder="Enter the price for your product" value="{{$data->price}}">
             </div>
 
             {{-- Product Image URL--}}
             <div class="mb-2">
                 <label for="image" class="form-label">Image URL</label>
                 <input type="text" class="form-control" id="image" name="image" aria-describedby="emailHelp"
-                    placeholder="Enter the Image URL for your product">
+                    placeholder="Enter the Image URL for your product" value="{{$data->imgurl}}">
             </div>
-            <button type="submit" class="btn btn-primary">Add Product</button>
+            <button type="submit" class="btn btn-primary">Save Changes</button>
         </form>
     </div>
 @endsection
