@@ -28,7 +28,7 @@ class ProductController extends Controller
 
         if ($res) {
             $res = DB::table('products')->get();
-            return view('read', ['data' => $res]);
+            return redirect(route('fetchproducts', ['data' => $res]));
         } else {
             echo "Failed";
         }
@@ -67,21 +67,18 @@ class ProductController extends Controller
 
         if ($res) {
             $dt = DB::table('products')->get();
-            return view('read', ['data' => $dt]);
-
+            return redirect(route('fetchproducts', ['data' => $dt]));
         } else {
             echo "Failed";
         }
     }
-
-
 
     public function deleteProduct($id)
     {
         $res = DB::table('products')->where('id', $id)->delete();
         if ($res) {
             $dt = DB::table('products')->get();
-            return view('read', ['data' => $dt]);
+            return redirect(route('fetchproducts', ['data' => $dt]));
         } else {
             echo "Failed";
         }
