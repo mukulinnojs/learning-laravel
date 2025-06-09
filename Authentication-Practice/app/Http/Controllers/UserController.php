@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 
 class UserController extends Controller
@@ -20,7 +21,7 @@ class UserController extends Controller
     public function renderSignupView()
     {
         if (Auth::check()) {
-           return $this->renderDashboard();
+            return $this->renderDashboard();
         } else {
             return view('signup');
         }
@@ -68,5 +69,42 @@ class UserController extends Controller
             Auth::logout();
             return redirect(route('login'));
         }
+    }
+    public function updateUser(Request $req)
+    {
+        $validated = $req->validate([
+            'fname' => 'required | string | max:255',
+            'lname' => 'required | string | max:255',
+            'email' => 'required | email'
+        ]);
+
+        $res = User::where('id', $req->id)->update([
+            'fname' => $req->fname,
+            'lname' => $req->lname,
+            'email' => $req->email
+        ]);
+
+        if ($res) {
+            return redirect(route('user.dashboard'));
+        }
+    }
+
+    public function updatePass(Request $req)
+    {
+
+        $validate = $req->validate([
+            'current_password' => 'required',
+            'password' => 'required | confirmed | max:255',
+        ]);
+
+        if (Hash::check($req->current_password, auth()->user()->password)) {
+            $res = User::where('id', Auth::id())->update([
+                'password' => Hash::make(value: $req->password),
+            ]);
+            if ($res) {
+                return $this->renderDashboard();
+            }
+        }
+
     }
 }
